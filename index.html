@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Google AI Studio App</title>
+    <script>
+      (function(){
+        function getParams(){
+          let params = {};
+          for(let [key, value] of new URL(window.location.href).searchParams.entries()){
+            params[key] = value;
+          }
+          return params;
+        }
+        function titleCase(str){
+          let s = str || '';
+          return s.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        }
+        function capitalize(str){
+          let s = str || '';
+          return s.charAt(0).toUpperCase() + s.slice(1);
+        }
+        const p = getParams();
+        window.__dynamicParams = {
+          businessName: titleCase(p.name),
+          cityLocation: capitalize(p.location),
+          phone: p.phone || ''
+        };
+      })();
+    </script>
+    <script type="module" crossorigin src="/furniture-demo-site/assets/index-9WNgmR1I.js"></script>
+    <link rel="stylesheet" crossorigin href="/furniture-demo-site/assets/index-DH9IE4My.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+
